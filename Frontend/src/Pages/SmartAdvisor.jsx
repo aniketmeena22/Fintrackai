@@ -1,9 +1,9 @@
-function AIInsights() {
+function SmartAdvisor() {
   return (
     <div>
-      <h1>AI Insights</h1>
+      <h1>SmartAdvisor</h1>
     </div>
   )
 }
 
-export default AIInsights
+export default SmartAdvisor

@@ -1,21 +1,29 @@
-import {Routes,Route} from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Dashboard from './pages/Dashboard'
-import Transactions from './pages/Transactions'
-import SmartAdvisor from './pages/SmartAdvisor'
- 
+import { Routes, Route } from 'react-router-dom'
+
+import Home from './Pages/Home'
+import Login from './Pages/Login'
+import Register from './Pages/Register'
+import Dashboard from './Pages/Dashboard'
+import Transactions from './Pages/Transactions'
+import SmartAdvisor from './Pages/SmartAdvisor'
+
+import Navbar from './components/Navbar'
+
 function App() {
-return(
-    <Routes>
+  return (
+    <>
+      <Navbar />
+
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-         <Route path="/transactions" element={<Transactions />} />
-         <Route path="/smartadvisor" element={<SmartAdvisor />} />
-    </Routes>
-)
-}    
- export default App
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/smartadvisor" element={<SmartAdvisor />} />
+      </Routes>
+    </>
+  )
+}
+
+export default App

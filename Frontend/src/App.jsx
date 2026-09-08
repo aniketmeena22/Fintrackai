@@ -7,7 +7,7 @@ import Dashboard from './Pages/Dashboard'
 import Transactions from './Pages/Transactions'
 import SmartAdvisor from './Pages/SmartAdvisor'
 
-import Navbar from './components/Navbar'
+import Navbar from './Components/Navbar'
 
 function App() {
   return (

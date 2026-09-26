@@ -6,7 +6,7 @@ function FeatureCard({ icon, title, description }) {
         {icon}
       </div>
 
-      <p className="text-sm md:text-xl font-semibold text-white">
+      <p className="text-xs md:text-xl font-semibold text-white">
         {title}
       </p>
 

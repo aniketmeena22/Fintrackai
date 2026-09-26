@@ -11,7 +11,7 @@ function Navbar() {
       <div className="hidden gap-7 text-sm text-slate-400 md:flex">
         <Link to="/" className="transition hover:text-white">Home</Link>
         <a href="#features" className="transition hover:text-white">Features</a>
-        <a href="#" className="transition hover:text-white">About</a>
+        <a href="#" className="transition hover:text-white">How it Works</a>
       </div>
 
       <div className="flex items-center gap-4 text-sm">

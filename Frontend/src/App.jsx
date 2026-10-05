@@ -8,6 +8,7 @@ import Transactions from './Pages/Transactions'
 import SmartAdvisor from './Pages/SmartAdvisor'
 
 import Navbar from './Components/Navbar'
+import DashboardLayout from './layouts/DashboardLayout'
 
 function App() {
   return (
@@ -18,7 +19,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/smartadvisor" element={<SmartAdvisor />} />
       </Routes>

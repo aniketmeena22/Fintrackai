@@ -1,60 +1,72 @@
-import { Link } from 'react-router-dom'
-import { Wallet, LayoutDashboard, ArrowLeftRight, Brain, Plus, Settings } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import {
+  LayoutDashboard,
+  ArrowLeftRight,
+  Brain,
+  Plus,
+  Settings,
+} from 'lucide-react'
 
-function Sidebar() {
+function Sidebar({ isCollapsed }) {
+  const location = useLocation()
+
+  const linkClass = (path) =>
+    `flex items-center rounded-lg px-4 py-3 text-sm font-medium transition ${
+      isCollapsed ? 'justify-center' : 'gap-3'
+    } ${
+      location.pathname === path
+        ? 'bg-slate-800 text-white'
+        : 'text-slate-400 hover:bg-slate-900 hover:text-white'
+    }`
+
+  const navLinks = [
+    { to: '/dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
+    { to: '/transactions', icon: <ArrowLeftRight size={20} />, label: 'Transactions' },
+    { to: '/smartadvisor', icon: <Brain size={20} />, label: 'Smart Advisor' },
+  ]
+
   return (
-    <aside className="fixed left-0 top-0 flex h-screen w-64 flex-col border-r border-slate-800 bg-slate-950 p-5 text-white">
-
+    <aside
+      className={`fixed left-0 top-0 flex h-screen flex-col border-r border-slate-800 bg-slate-950 p-5 text-white ${
+        isCollapsed ? 'w-20' : 'w-64'
+      }`}
+    >
       {/* Logo */}
       <div className="mb-10">
-        <h2 className="text-xl font-bold">
-          FinTrack <span className="text-emerald-400">AI</span>
-        </h2>
+        {isCollapsed ? (
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500">
+            <span className="font-bold text-slate-950">F</span>
+          </div>
+        ) : (
+          <h2 className="text-xl font-bold">
+            FinTrack <span className="text-emerald-400">AI</span>
+          </h2>
+        )}
       </div>
 
       {/* Navigation */}
       <nav className="flex flex-col gap-2">
-        <Link
-          to="/dashboard"
-          className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-slate-400 transition hover:bg-slate-900 hover:text-white"
-        >
-          <LayoutDashboard size={20} />
-          Dashboard
-        </Link>
-
-        <Link
-          to="/transactions"
-          className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-slate-400 transition hover:bg-slate-900 hover:text-white"
-        >
-          <ArrowLeftRight size={20} />
-          Transactions
-        </Link>
-
-        <Link
-          to="/smartadvisor"
-          className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-slate-400 transition hover:bg-slate-900 hover:text-white"
-        >
-          <Brain size={20} />
-          Smart Advisor
-        </Link>
+        {navLinks.map(({ to, icon, label }) => (
+          <Link key={to} to={to} className={linkClass(to)}>
+            {icon}
+            {!isCollapsed && <span>{label}</span>}
+          </Link>
+        ))}
       </nav>
 
       {/* Add Transaction */}
       <div className="mt-8">
         <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400">
           <Plus size={18} />
-          Add Transaction
+          {!isCollapsed && <span>Add Transaction</span>}
         </button>
       </div>
 
       {/* Settings */}
       <div className="mt-auto border-t border-slate-800 pt-4">
-        <Link
-          to="/settings"
-          className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-900 hover:text-white"
-        >
+        <Link to="/settings" className={linkClass('/settings')}>
           <Settings size={20} />
-          Settings
+          {!isCollapsed && <span>Settings</span>}
         </Link>
       </div>
 

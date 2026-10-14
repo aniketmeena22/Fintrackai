@@ -12,22 +12,21 @@ import DashboardLayout from './layouts/DashboardLayout'
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <Routes>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+      {/* Public Pages — with Navbar */}
+      <Route path="/" element={<><Navbar /><Home /></>} />
+      <Route path="/login" element={<><Navbar /><Login /></>} />
+      <Route path="/register" element={<><Navbar /><Register /></>} />
 
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-
+      {/* Dashboard Pages — with DashboardLayout */}
+      <Route element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/smartadvisor" element={<SmartAdvisor />} />
-      </Routes>
-    </>
+      </Route>
+
+    </Routes>
   )
 }
 

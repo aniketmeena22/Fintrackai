@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
@@ -9,7 +10,6 @@ function DashboardLayout() {
 
   return (
     <div className="min-h-screen bg-slate-950">
-
       <Sidebar isCollapsed={isCollapsed} />
 
       <Topbar
@@ -18,13 +18,12 @@ function DashboardLayout() {
       />
 
       <main
-        className={`px-4 ${
+        className={`px-4 pt-24 ${
           isCollapsed ? 'ml-20' : 'ml-64'
         }`}
       >
         <Outlet />
       </main>
-
     </div>
   )
 }
